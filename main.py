@@ -28,9 +28,28 @@ askbutton.place(x=260, y=125)
 question = tkinter.Label(text="知りたいのは何分かな?", bg="white")
 question.place(x=100, y=40)
 
+string = input("求めたい分を入力してください: ")
+minutes = float(string)
+hours = round(minutes / 60, 2)
+
+def minutes_to_hours():
+    output = string + "分は" + str(hours) + "時間です"
+    print(output)
+
+minutes_to_hours()
+
 #答えを表示
 answer = tkinter.Label(text="...", bg="white")
 answer.place(x=115, y=235)
+
+#イベント設定
+def ask_click():
+    val = entry.get()
+    minutes = float(val)
+    hours = round(minutes/60, 2)
+    answer["text"] = str(hours) + "時間だね!"
+    
+askbutton["command"] = ask_click
 
 #メインループ
 root.mainloop()
